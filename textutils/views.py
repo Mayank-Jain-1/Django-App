@@ -7,6 +7,7 @@ def index(request):
   return render(request, 'index.html')
 
 def removePunc(request):
+  print(request.GET.get('text', 'Enter your text here'))
   return HttpResponse('<h1>Remove punc</h1><a href = "http://localhost:8000">sdfsdaf</a>')
   
 def capFirst(request):
