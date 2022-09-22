@@ -1,18 +1,20 @@
+from string import punctuation
 from django.http import HttpResponse
 from django.shortcuts import render
 
 
-
 def index(request):
   return render(request, 'index.html')
+  
+def analyze(request):
+  djText = request.GET.get('text', 'nothing')
+  
+  analyzedText = ''
+  punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+  for i in djText:
+    if i not in punctuation:
+      analyzedText += i
 
-def removePunc(request):
-  print(request.GET.get('text', 'Enter your text here'))
-  return HttpResponse('<h1>Remove punc</h1><a href = "http://localhost:8000">sdfsdaf</a>')
-  
-def capFirst(request):
-  return HttpResponse('<h1>capfirst</h1>')
-  
-def removeSpace(request):
-  return HttpResponse('<h1>remove space</h1>')
+  params = {'analyzedText':analyzedText}
+  return render(request, 'analyze.html', params)
   

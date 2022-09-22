@@ -12,18 +12,21 @@
     padding: 0;
     box-sizing: border-box;
   }
-body{
-  /* background-color: black; */
-}
+  body{
+    background-color: #0d1117;
+  }
 
   #navbar{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    background-color: #161b22;
+    color: #C8D1D5;
   }
 
   #title{
+    font-size: 3rem;
     padding-left: 4rem;
   }
 
@@ -39,7 +42,7 @@ body{
   }
 
   #loginButton{
-    background-color: white;
+    background-color: #C8D1D5;
     color: black;
     padding:10px 20px;  
     border-radius: 5px;
@@ -47,8 +50,20 @@ body{
   }
 
   #heading{
+    color: #C8D1D5;
     margin:10px;
     font-size: 3rem;
+    padding-left: 10vw;
+    margin: 4rem 0 1rem 0 ;
+    align-self: flex-start;
+  }
+
+  #textarea{
+    font-size: 1rem;
+    min-height: 150px; 
+    width: 80vw; 
+    padding: 15px; 
+    border: 2px solid black;
   }
 
   #buttonDiv{
@@ -56,19 +71,20 @@ body{
   }
 
   .textButton{
-    padding: 5px 15px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
     margin-right: 15px;
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    border-radius: 20px;
+    background-color: #21262d;
+    color: #C8D1D5;
+    border: 1px solid #C8D1D5;
+    border-radius: 10px;
   }
 
 </style>
 
 <body>
-  <div id = 'navbar' style="width: 100vw; height: 100px; background-color: black; color: white">
-    <h1 id= "title" style="background-color: black">TextUtils</h1>
+  <div id = 'navbar' style="width: 100vw; height: 100px;">
+    <h1 id= "title">TextUtils</h1>
     <ul id="navigation">
       <li class="navlink">Home</li>
       <li class="navlink">About</li>
@@ -82,25 +98,18 @@ body{
         width: 100vw;
       ">
     <h1 id="heading" style="display: flex; align-items: left;">Enter your text here to analyze it:</h1>
-    <div style="display: flex; justify-content: center;">
-      <textarea style="min-height: 150px; width: 80vw; padding: 10px; border: 2px solid black"></textarea>
+    <form action="/analyze" method="get">
+      <div style="display: flex; justify-content: center;">
+        <textarea name ='text' id = "textarea"></textarea>
+      </div>
+    
+      <div id="buttonDiv" style="width: 80vw; padding: 10px">
+        <button type= "submit" class="textButton">
+          Analyze
+        </button>
+      </div>
     </div>
-
-    <div id="buttonDiv" style="width: 80vw; padding: 10px">
-      <button class="textButton">
-        Remove Spaces
-      </button>
-      <button class="textButton">
-        Capitalize First
-      </button>
-      <button class="textButton">
-        Remove Spaces
-      </button>
-      <button class="textButton">
-        Clear Text
-      </button>
-    </div>
-  </div>
+  </form>
 </body>
 
 </html>
