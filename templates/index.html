@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Home</title>
+  <title>TextUtils</title>
 </head>
 
 <style>
@@ -12,65 +12,79 @@
     padding: 0;
     box-sizing: border-box;
   }
-  body{
+
+  body {
     background-color: #0d1117;
   }
 
-  #navbar{
+  #navbar {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
     background-color: #161b22;
-    color: #C8D1D5;
+    color: white;
   }
 
-  #title{
+  #title {
     font-size: 3rem;
     padding-left: 4rem;
   }
 
-  #navigation{
+  #navigation {
     list-style: none;
     display: flex;
     align-items: center;
     padding-right: 2rem;
   }
-  .navlink{
+
+  .navlink {
     font-size: larger;
     margin-left: 30px;
   }
 
-  #loginButton{
-    background-color: #C8D1D5;
+  #loginButton {
+    background-color: white;
     color: black;
-    padding:10px 20px;  
+    padding: 10px 20px;
     border-radius: 5px;
     font-weight: 300;
   }
 
-  #heading{
+  #heading {
     color: #C8D1D5;
-    margin:10px;
+    margin: 10px;
     font-size: 3rem;
     padding-left: 10vw;
-    margin: 4rem 0 1rem 0 ;
+    margin: 4rem 0 1rem 0;
     align-self: flex-start;
   }
 
-  #textarea{
+  #textarea {
     font-size: 1rem;
-    min-height: 150px; 
-    width: 80vw; 
-    padding: 15px; 
+    min-height: 150px;
+    width: 80vw;
+    padding: 15px;
     border: 2px solid black;
   }
 
-  #buttonDiv{
-    margin-top: 20px;
+  #checkboxDiv {
+    display: flex;
+    margin: 20px 0;
   }
 
-  .textButton{
+  .checkbox{
+    width: 20px;
+    margin-right: 10px;
+  }
+
+  .checkBoxText {
+    font-size: 1.3rem;
+    color: #C8D1D5;
+    margin-right: 50px;
+  }
+
+  .textButton {
     font-size: 1.2rem;
     padding: 10px 20px;
     margin-right: 15px;
@@ -79,16 +93,15 @@
     border: 1px solid #C8D1D5;
     border-radius: 10px;
   }
-
 </style>
 
 <body>
-  <div id = 'navbar' style="width: 100vw; height: 100px;">
-    <h1 id= "title">TextUtils</h1>
+  <div id='navbar' style="width: 100vw; height: 100px;">
+    <h1 id="title">TextUtils</h1>
     <ul id="navigation">
       <li class="navlink">Home</li>
       <li class="navlink">About</li>
-      <li id = "loginButton" class="navlink">Login</li>
+      <li id="loginButton" class="navlink">Login</li>
     </ul>
   </div>
   <div style="
@@ -100,15 +113,24 @@
     <h1 id="heading" style="display: flex; align-items: left;">Enter your text here to analyze it:</h1>
     <form action="/analyze" method="get">
       <div style="display: flex; justify-content: center;">
-        <textarea name ='text' id = "textarea"></textarea>
+        <textarea name='text' id="textarea"></textarea>
       </div>
-    
-      <div id="buttonDiv" style="width: 80vw; padding: 10px">
-        <button type= "submit" class="textButton">
-          Analyze
-        </button>
+
+      <div id="checkboxDiv" style="width: 80vw; padding: 10px">
+        <input class='checkbox'  name='removePunc' type="checkbox">
+        <p class="checkBoxText">Remove Punctuation</p>
+        </input>
+        <input class='checkbox'  name='capFirst' type="checkbox">
+        <p class="checkBoxText">Capitalize First Letters</p>
+        </input>
+        
       </div>
-    </div>
+      <div>
+      <button type="submit" class="textButton">
+        Analyze
+      </button>
+      </div>
+  </div>
   </form>
 </body>
 
