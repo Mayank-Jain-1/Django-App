@@ -2,6 +2,7 @@ from ast import AnnAssign
 from string import punctuation
 from django.http import HttpResponse
 from django.shortcuts import render
+import re
 
 
 def index(request):
@@ -9,15 +10,17 @@ def index(request):
   
 def analyze(request):
   
-  punctuations = '''!()-[]{};:'"\,<>/?@#$%^&*_~'''
+  punctuations = r'''=!()-[]{};:'"\,<>/?@#$%^&*_~'''
   
   
-  djText = request.GET.get('text', 'nothing')
+  djText = request.POST.get('text', 'Please enter some text to analyze...')
+  removePunc = request.POST.get('removePunc', 'off')
+  capFirst = request.POST.get('capFirst', 'off')
+  removeSpace = request.POST.get('removeSpace', 'off')
+  removeNewLines = request.POST.get('removeNewLines', 'off')
+  
   analyzedText = djText
 
-  removePunc = request.GET.get('removePunc', 'off')
-  capFirst = request.GET.get('capFirst', 'off')
-  removeSpace = request.GET.get('removeSpace', 'off')
 
   if removePunc == 'on':
     temp = ''
@@ -25,11 +28,20 @@ def analyze(request):
       if i not in punctuations or i == ' ':
         temp += i
     analyzedText = temp
+
+  if removeNewLines == 'on':
+    temp = analyzedText.split('\r')
+    temp = ''.join([x.replace('\n','') for x in temp])
+    analyzedText = temp
+
+  if removeSpace == 'on':
+    analyzedText = re.sub(' +', ' ', analyzedText) 
+  
   if capFirst == 'on':
     sentences = analyzedText.split('.')
     print(sentences)
     analyzedText = ". ".join(map(lambda x : x.strip().capitalize(), sentences))
-
+  
 
   params = {'analyzedText':analyzedText,
             'removePunc': removePunc,

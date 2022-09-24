@@ -1,11 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Analyzed Text</title>
+  <meta charset="UTF-8" />
+  <title>TextUtils</title>
 </head>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #0d1117;
+  }
+
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background-color: #161b22;
+    color: white;
+  }
+
+  #title {
+    font-size: 3rem;
+    padding-left: 4rem;
+  }
+
+  #navigation {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+  }
+
+  .navlink {
+    font-size: larger;
+    margin-left: 30px;
+  }
+
+  #loginButton {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 300;
+  }
+
+  #heading {
+    color: #C8D1D5;
+    margin: 10px;
+    font-size: 3rem;
+    margin: 4rem 10vw 1rem 10vw;
+    align-self: flex-start;
+  }
+
+  #analyzedText{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #21262d;
+    color: white;
+    font-size: 1rem;
+    min-height: 150px;
+    width: 80vw;
+    padding: 15px;
+    border: 1px solid white;
+  }
+
+  
+</style>
+
 <body>
-  <h1>Here is your analyzed text</h1>
-  <p>{{analyzedText}}</p>
+  <div id='navbar' style="width: 100vw; height: 100px;">
+    <h1 id="title">TextUtils</h1>
+    <ul id="navigation">
+      <li class="navlink">Home</li>
+      <li class="navlink">About</li>
+      <li id="loginButton" class="navlink">Login</li>
+    </ul>
+  </div>
+  <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+      ">
+    <h1 id="heading" style="display: flex; align-items: left;">Your Text has been analyzed</h1>
+    <pre id = "analyzedText">{{analyzedText}}</pre>
+  </div>
 </body>
-</html>
+
+</html>s 

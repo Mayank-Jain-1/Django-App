@@ -61,11 +61,14 @@
   }
 
   #textarea {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #21262d;
+    color: white;
     font-size: 1rem;
     min-height: 150px;
     width: 80vw;
     padding: 15px;
-    border: 2px solid black;
+    border: 1px solid white;
   }
 
   #checkboxDiv {
@@ -73,12 +76,14 @@
     margin: 20px 0;
   }
 
-  .checkbox{
+  .checkbox {
     width: 20px;
     margin-right: 10px;
+    white-space: hidden;
   }
 
   .checkBoxText {
+    white-space: hidden;
     font-size: 1.3rem;
     color: #C8D1D5;
     margin-right: 50px;
@@ -111,27 +116,32 @@
         width: 100vw;
       ">
     <h1 id="heading" style="display: flex; align-items: left;">Enter your text here to analyze it:</h1>
-    <form action="/analyze" method="get">
+    <form action="/analyze" method="post" >{% csrf_token %}
       <div style="display: flex; justify-content: center;">
         <textarea name='text' id="textarea"></textarea>
       </div>
 
       <div id="checkboxDiv" style="width: 80vw; padding: 10px">
-        <input class='checkbox'  name='removePunc' type="checkbox">
+        <input class='checkbox' name='removePunc' type="checkbox">
         <p class="checkBoxText">Remove Punctuation</p>
         </input>
-        <input class='checkbox'  name='capFirst' type="checkbox">
+        <input class='checkbox' name='capFirst' type="checkbox">
         <p class="checkBoxText">Capitalize First Letters</p>
         </input>
-        
+        <input class='checkbox' name='removeSpace' type="checkbox">
+        <p class="checkBoxText">Remove Extra Spaces</p>
+        </input>
+        <input class='checkbox' name='removeNewLines' type="checkbox">
+        <p class="checkBoxText">Remove New Lines</p>
+        </input>
       </div>
       <div>
-      <button type="submit" class="textButton">
-        Analyze
-      </button>
+        <button type="submit" class="textButton">
+          Analyze
+        </button>
       </div>
+    </form>
   </div>
-  </form>
 </body>
 
 </html>
