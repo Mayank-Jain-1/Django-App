@@ -39,7 +39,6 @@ def analyze(request):
   
   if capFirst == 'on':
     sentences = analyzedText.split('.')
-    print(sentences)
     analyzedText = ". ".join(map(lambda x : x.strip().capitalize(), sentences))
   
 
